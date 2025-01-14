@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            background-color: sandybrown;
+            text-align: center; /* Center all text */
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color:black;">UI QR Code Basic Generator</h2>
+    <input type="text" id="qr-code-value" placeholder="Enter text or URL">
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <img id="qr-code-image" alt="QR code" style="margin-top: 20px;">
+
+    <h3>Instructions on How to Use the Generator</h3>
+    <ol style="display: inline-block; text-align: left;"> 
+        <li><strong>Open the QR Code Generator:</strong> Open this HTML file in a web browser.</li>
+        <li><strong>Enter Text or URL:</strong> In the input field labeled "Enter a text or URL", type the text or URL you want to convert into a QR code.</li>
+        <li><strong>Generate the QR Code:</strong> Click the "Generate QR Code" button. This will create the QR code based on your input.</li>
+        <li><strong>View the QR Code:</strong> The generated QR code will appear below the input field. You can scan this QR code using a QR code reader or a smartphone camera.</li>
+        <li><strong>Repeat as Needed:</strong> You can enter a new text or URL and click the button again to generate a different QR code.</li>
+    </ol>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        function generateQRCode() {
+            const value = document.getElementById('qr-code-value').value;
+            const options = {
+                value: value,
+                size: 400,
+                level: 'H'
+            };
+            const qrCode = new QRious(options);
+            const qrCodeImage = qrCode.toDataURL();
+            document.getElementById('qr-code-image').src = qrCodeImage;
+        }
+    </script>
+</body>
+</html>
